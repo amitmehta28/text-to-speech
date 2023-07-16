@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2 class="heading">Amit Mehta Project - Text to Speech</h2>
+    <div class="languages">
+        <h4 class="lang_heading">Select languages</h4>
+        <Select class="selct_lang">
+            <option class="language" value="en-US">US English</option>
+            <option class="language" value="hi-IN">हिन्दी Hindi</option>
+            <option class="language" value="en-GB">UK English Female</option>
+            <option class="language" value="fr-FR">français</option>
+            <option class="language" value="pt-BR">português do Brasil</option>
+        </Select>
+    </div>
+
+
+
+    <div><input type="text" id="text-to-speech" placeholder="Enter text to speak..." /></div>
+    <div><button type="button" onclick="textToAudio()">Speak</button></div>
+    <br />
+    <div><small><b>NOTE:</b> Enter text and click on speak button . </small></div>
+    <script>
+
+        function textToAudio() {
+            let msg = document.getElementById("text-to-speech").value;
+
+            let selctLang = document.querySelector(".selct_lang");
+            let speakLang = selctLang.value
+            
+
+            let speech = new SpeechSynthesisUtterance();
+            speech.lang = speakLang;
+
+            speech.text = msg;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+
+</html>
